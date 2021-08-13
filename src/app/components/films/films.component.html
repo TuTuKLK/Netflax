@@ -1,0 +1,18 @@
+<div>
+    <h3>Bonjour les Movie</h3>
+    <ng-container *ngIf="films|async">
+        <ng-container *ngFor="let film of films|async">
+            <tr>
+                <td>{{film.Title}}</td>
+                <td><a href="{{film.Trailer ? film.Trailer : notFound}}" target="_blank">Trailer</a></td>
+                <!-- <td><iframe width="1904" height="768" src="film.Trailer" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td> -->
+                <td *ngIf="film">{{film.Title}}</td>
+            </tr>
+    
+    
+    
+        </ng-container>
+    </ng-container>
+
+
+</div>

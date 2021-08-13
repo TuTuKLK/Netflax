@@ -1,0 +1,40 @@
+<nav>
+<!-- <input type="button" (click)="switchToBad()"> -->
+<a routerLink="/acceuil" id="logo"><img src="assets/logo.png" alt="" id="logo-img">Netflax</a>
+
+
+    <ul id="nav-bar">
+        <ng-container *ngFor="let link of links">
+        <li *ngIf="link.isVisible || link.isVisible === undefined">
+            <ng-container *ngIf="link.children?.length === 0 || link.children === undefined">
+            <a *ngIf='link.url' [routerLink]="link.url">
+                <div>
+                {{link.title}}
+                </div>
+            </a>
+            <div *ngIf='!link.url'>
+                {{link.title}}
+            </div>
+            </ng-container>
+            <ng-container *ngIf="link.children !== undefined && link.children.length > 0">
+            <div>
+                {{link.title}}
+            </div>
+            <ul>
+                <li *ngFor="let child of link.children">
+                <a *ngIf='child.url' [routerLink]="child.url">
+                    <div>
+                    {{child.title}}
+                    </div>
+                </a>
+                <div *ngIf='!child.url'>
+                    {{child.title}}
+                </div>
+                </li>
+            </ul>
+            </ng-container>
+        </li>
+        </ng-container>
+    </ul>
+</nav>
+<div class="sousNav"></div>
