@@ -8,10 +8,10 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class ActeursComponent implements OnInit {
 
-  constructor(private _http:DatabaseService) { }
+  constructor(private dataBaseService:DatabaseService) { }
 
   ngOnInit(): void {
-    this._http.getActors().subscribe(res=>console.log(res));
+    this.dataBaseService.getActors().subscribe(res=>console.log(res));
 
   }
 
