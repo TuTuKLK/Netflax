@@ -13,6 +13,7 @@ import { FilmsComponent } from './components/films/films.component';
 import { UrlProtetPipe } from './shared/url-protet.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {PaginatorModule} from 'primeng/paginator';
+import { ListeFilmsComponent } from './components/liste-films/liste-films.component';
 
 
 
@@ -28,7 +29,8 @@ import {PaginatorModule} from 'primeng/paginator';
     FooterComponent,
     FilmsComponent,
     ActeursComponent,
-    UrlProtetPipe
+    UrlProtetPipe,
+    ListeFilmsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { IFilm } from './../interface/film.interface';
 import { Injectable } from '@angular/core';
 import { from, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { filter,tap, map } from 'rxjs/operators';
 
 
@@ -26,8 +26,8 @@ export class DatabaseService {
   }
 
   //********************MOVIES*************************************** */
-  public getMovies():Observable <IFilm>{
-    return this._http.get<IFilm>(`${this._LocalURL}films`)
+  public getMovies():Observable <IFilm[]>{
+    return this._http.get<IFilm[]>(`${this._LocalURL}films`)
   }
   // public getMovieByName(name:string): Observable<any[]>{
   //   return this.getMovies().pipe(
@@ -45,9 +45,13 @@ export class DatabaseService {
     return this._http.get(`${this._LocalURL}directors`)
   }
 
-  //****************************GENDERS***************************** */
+  //****************************GENRE***************************** */
+  public getLabels(): Observable <string[]>{
+    return this._http.get<string[]>(`${this._LocalURL}genders`)
+  }
 
-  public getGenders():Observable <any>{
-    return this._http.get(`${this._LocalURL}genders`)
+  public getFilmsGenre(genre:string):Observable <any>{
+    const option : any = {params: new HttpParams().set('genre', genre)};
+    return this._http.get(`${this._LocalURL}filmsgenre`,option)
   }
 }

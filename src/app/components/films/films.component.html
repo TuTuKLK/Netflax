@@ -11,6 +11,17 @@
       [showJumpToPageDropdown]="true"
     ></p-paginator>
   </div>
+
+
+  <div>
+    <select #options (change)="chooseGenre(options.value)" name="machin" id="bidulemachin">
+      <option value= "{{label}}" *ngFor="let label of (labels|async)">
+        {{label}}
+      </option>
+    </select>
+  </div>
+
+
   <div *ngIf="films">
     <ng-container *ngFor="let film of films">
       <table>

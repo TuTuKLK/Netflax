@@ -1,0 +1,14 @@
+<p>liste-films works!</p>
+
+<button (click)="nextPage()" >{{pageIndex}}</button>
+<select (change)="genre($event)">
+    <option value="" selected>Selctionner un Genre</option>
+    <option *ngFor="let genre of filmsGenre">
+        {{genre}}
+    </option>
+
+
+</select>
+<div>
+    {{paginedFilms | json}}
+</div>

@@ -11,7 +11,7 @@ export class ActeursComponent implements OnInit {
   constructor(private dataBaseService:DatabaseService) { }
 
   ngOnInit(): void {
-    this.dataBaseService.getActors().subscribe(res=>console.log(res));
+    this.dataBaseService.getFilmsGenre('Comedy').subscribe(res=>console.log(res));
 
   }
 
