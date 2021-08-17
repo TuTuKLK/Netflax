@@ -1,17 +1,44 @@
 <div>
-    <h3>Bonjour les Movie</h3>
-    <ng-container *ngIf="films">
-        <ng-container *ngFor="let film of films">
-            <tr>
-                <td>{{film.Title}}</td>
-                <td><a href="{{film.Trailer ? film.Trailer : notFound}}" target="_blank">Trailer</a></td>
-                <!-- <iframe width="300" height="200" src="{{film.Trailer}} " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-                  <td *ngIf="film">{{film.ReleaseDate}}</td>
-                <td *ngIf="film">{{film.Summary}}</td>
-                <td *ngIf="film">{{film.ShortDescription}}</td>
-            </tr>
-        </ng-container>
+  <h3>Bonjour les Movie</h3>
+  <div>
+    <p-paginator
+      #paginatorTop
+      [rows]="pageSize"
+      [totalRecords]="filmsAll.length"
+      [pageLinkSize]="0"
+      (onPageChange)="getPage($event)"
+      [rowsPerPageOptions]="[10, 20, 30]"
+      [showJumpToPageDropdown]="true"
+    ></p-paginator>
+  </div>
+  <div *ngIf="films">
+    <ng-container *ngFor="let film of films">
+      <table>
+        <tr>
+          <td>{{ film.Title }}</td>
+          <td *ngIf="film">{{ film.ReleaseDate | date: "MM YYYY" }}</td>
+          <td>
+            <img
+              src="{{
+                film.Picture ? urlPicture + film.Picture : pictureNotFound
+              }}"
+            />
+          </td>
+          <td *ngIf="film">Résumé: <br />{{ film.Summary }}</td>
+          <td *ngIf="film">Description : <br />{{ film.ShortDescription }}</td>
+          <td>
+            <iframe
+              width="300"
+              height="200"
+              [src]="embedTrailer(film.Trailer) | urlProtet"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </td>
+        </tr>
+      </table>
     </ng-container>
-
-
+  </div>
 </div>

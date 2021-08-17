@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.2.0",
+    "@angular/cdk": "^12.2.1",
     "@angular/common": "~12.2.0",
     "@angular/compiler": "~12.2.0",
     "@angular/core": "~12.2.0",
@@ -22,7 +23,11 @@
     "animations": "0.0.0",
     "cdk": "^1.118.0",
     "flex-layout": "^1.0.1",
+    "jquery": "^3.6.0",
     "material": "^0.4.3",
+    "materialize-css": "^1.0.0-rc.2",
+    "primeicons": "^4.1.0",
+    "primeng": "^12.1.0-rc.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

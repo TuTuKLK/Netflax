@@ -4,4 +4,5 @@ export interface IFilm{
     ReleaseDate:string;
     Summary:string;
     ShortDescription:string;
+    Picture: string
 }

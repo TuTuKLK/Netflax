@@ -1,6 +1,6 @@
 import { ActeursComponent } from './components/acteurs/acteurs.component';
 import { NgModule } from '@angular/core';
-import { BrowserModule} from '@angular/platform-browser';
+import { BrowserModule, DomSanitizer} from '@angular/platform-browser';
 // import {flexLayoutModule} from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,14 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { FilmsComponent } from './components/films/films.component';
+import { UrlProtetPipe } from './shared/url-protet.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {PaginatorModule} from 'primeng/paginator';
+
+
+
+
+
 
 
 @NgModule({
@@ -19,13 +27,17 @@ import { FilmsComponent } from './components/films/films.component';
     HomeComponent,
     FooterComponent,
     FilmsComponent,
-    ActeursComponent
+    ActeursComponent,
+    UrlProtetPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    PaginatorModule
+    
 
   ],
   providers: [],
