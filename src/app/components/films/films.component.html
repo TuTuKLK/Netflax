@@ -1,6 +1,6 @@
 <div>
-  <h3>Bonjour les Movie</h3>
-  <div>
+
+  <div> <!-- *PAGINATOR -->
     <p-paginator
       #paginatorTop
       [rows]="pageSize"
@@ -12,44 +12,51 @@
     ></p-paginator>
   </div>
 
-
-  <div>
+<!-- *********************************************************************************************** -->
+<!-- ******************************NOT COMPLET****************************************************** -->
+<!-- ******************************SORT FILM BY LABEL*********************************************** -->
+<!-- *********************************************************************************************** -->
+  <!-- <div class="center-div">
     <select #options (change)="chooseGenre(options.value)" name="machin" id="bidulemachin">
+      <option value="" selected><i>Aucun</i></option>
       <option value= "{{label}}" *ngFor="let label of (labels|async)">
         {{label}}
       </option>
     </select>
-  </div>
+  </div> -->
+<!-- *********************************************************************************************** -->
+<!-- *********************************************************************************************** -->
+<!-- *********************************************************************************************** -->
 
 
-  <div *ngIf="films">
-    <ng-container *ngFor="let film of films">
-      <table>
-        <tr>
-          <td>{{ film.Title }}</td>
-          <td *ngIf="film">{{ film.ReleaseDate | date: "MM YYYY" }}</td>
-          <td>
-            <img
-              src="{{
+  <div class="center-div"> <!-- *CARD -->
+    <div *ngIf="films">
+      <ng-container *ngFor="let film of films">
+        <p-card class="card" header="{{ film.Title }}" subheader="" [style]="{width: '360px'}" styleClass="p-card-shadow">
+          <ng-template pTemplate="header">
+              <img alt="Card" src="{{
                 film.Picture ? urlPicture + film.Picture : pictureNotFound
-              }}"
-            />
-          </td>
-          <td *ngIf="film">Résumé: <br />{{ film.Summary }}</td>
-          <td *ngIf="film">Description : <br />{{ film.ShortDescription }}</td>
-          <td>
-            <iframe
-              width="300"
+              }}">
+          </ng-template>
+          <p>{{ film.ShortDescription }}</p>
+          
+          <ng-template pTemplate="footer">
+            <div class="textcenter-div">
+              <a [routerLink]="['/info',film.IdMovie]"><p-button label="More info"></p-button></a>
+              
+              <iframe
+              width="330"
               height="200"
               [src]="embedTrailer(film.Trailer) | urlProtet"
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
-            ></iframe>
-          </td>
-        </tr>
-      </table>
-    </ng-container>
+              ></iframe>
+            </div>
+          </ng-template>
+        </p-card>
+      </ng-container>
+    </div>
   </div>
 </div>

@@ -19,8 +19,9 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     this.links.push(new Link('Acceuil', '/'))
     this.links.push(new Link('Films', '/films'))
+    this.links.push(new Link('Films par Genre', '/genre'))
     this.links.push(new Link('Acteurs', '/acteurs'))
-    // this.links.push(new Link('Panier', '/shop/cart'))
+    // this.links.push(new Link('Infos', '/info'))
   }
 
 }

@@ -1,0 +1,50 @@
+<div class="center-div"> <!-- *CARD -->
+    <ng-container *ngIf="movie">
+        <p-card class="card" header="{{ movie.Title }}" subheader="" [style]="{width: '360px'}" styleClass="p-card-shadow">
+            <ng-template pTemplate="header">
+                <img alt="Card" src="{{
+                    movie.Picture ? urlPicture + movie.Picture : pictureNotFound
+                }}">
+            </ng-template>
+            <ul>
+                <li>Date de réalisation : </li>
+                <option type="Date">{{movie.ReleaseDate|date}}</option>
+                <p> </p>
+                <li>Description : </li>
+                <p>{{ movie.ShortDescription }}</p>
+                <li>Résumé :</li>
+                <p>{{movie.Summary}}</p>
+                <li>Genres :</li>
+                <ng-container *ngFor="let g of genre">
+                    <ul><li>{{g.Label}}</li></ul>
+                </ng-container>
+                <li>Acteurs :</li>
+                <ng-container *ngFor="let actor of actors">
+                    <ul><li>{{actor.FirstName}} {{actor.LastName}}</li></ul>
+                </ng-container>
+
+                
+                
+            </ul>
+            
+            <ng-template pTemplate="footer">
+                <div class="textcenter-div">
+                    <iframe
+                    width="330"
+                    height="200"
+                    [src]="embedTrailer(movie.Trailer) | urlProtet"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    ></iframe>
+                </div>
+            </ng-template>
+        </p-card> 
+    </ng-container>
+</div>
+
+
+
+
+

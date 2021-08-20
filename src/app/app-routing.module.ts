@@ -1,3 +1,4 @@
+import { InfoComponent } from './components/info/info.component';
 import { ListeFilmsComponent } from './components/liste-films/liste-films.component';
 import { ActeursComponent } from './components/acteurs/acteurs.component';
 import { FilmsComponent } from './components/films/films.component';
@@ -9,9 +10,10 @@ const routes: Routes = [
   {path:'', redirectTo:'acceuil', pathMatch:'full'},
   {path:'acceuil', component:HomeComponent},
   {path:'films',component:FilmsComponent},
-  // {path:'films',component:ListeFilmsComponent},
-
+  {path:'info',component:InfoComponent},
+  {path:'genre',component:ListeFilmsComponent},
   {path:'acteurs',component:ActeursComponent},
+  {path:'info/:id', component:InfoComponent},
 ];
 
 @NgModule({

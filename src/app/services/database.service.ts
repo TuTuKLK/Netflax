@@ -24,10 +24,31 @@ export class DatabaseService {
   public getActors():Observable <any>{
     return this._http.get(`${this._LocalURL}actors`)
   }
+  public getActorsID(id:number):Observable <any>{
+    return this._http.get(`${this._LocalURL}actorsID/${id}`)
+  }
 
   //********************MOVIES*************************************** */
   public getMovies():Observable <IFilm[]>{
     return this._http.get<IFilm[]>(`${this._LocalURL}films`)
+  }
+  // public getMovieByID(id:number):Observable <any>{
+  //   const option : any = {params: new HttpParams().set('id', id)};
+  //   return this._http.get(`${this._LocalURL}filmsid`,option)
+  // }
+  public getMovieByID(id:number):Observable <any>{
+    return this._http.get(`${this._LocalURL}films/${id}`)
+  }
+  public getMoviesAlpha():Observable <IFilm[]>{
+    return this._http.get<IFilm[]>(`${this._LocalURL}filmsAlpha`)
+  }
+  public getMoviesNotAlpha():Observable <IFilm[]>{
+    return this._http.get<IFilm[]>(`${this._LocalURL}filmsNotAlpha`)
+  }
+
+  public getMovieBySelectedRow(start:number,end:number):Observable <any>{
+    const params : HttpParams = new HttpParams().append('start', start).append('end', end);
+    return this._http.get(`${this._LocalURL}films`,{params:params})
   }
   // public getMovieByName(name:string): Observable<any[]>{
   //   return this.getMovies().pipe(
@@ -47,7 +68,11 @@ export class DatabaseService {
 
   //****************************GENRE***************************** */
   public getLabels(): Observable <string[]>{
-    return this._http.get<string[]>(`${this._LocalURL}genders`)
+    return this._http.get<string[]>(`${this._LocalURL}genres`)
+  }
+
+  public getGenreID(id:number): Observable <string[]>{
+    return this._http.get<string[]>(`${this._LocalURL}genresID/${id}`)
   }
 
   public getFilmsGenre(genre:string):Observable <any>{

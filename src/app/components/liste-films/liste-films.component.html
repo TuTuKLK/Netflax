@@ -1,14 +1,46 @@
-<p>liste-films works!</p>
+<div class="center-div"> <!-- *PAGINATOR -->
+    <div class="center-div">
+        <button (click)="previousPage()" >◀</button>
+        Vous êtes sur la page : {{pageIndex}} 
+        <button (click)="nextPage()" >▶</button>
+    </div>
 
-<button (click)="nextPage()" >{{pageIndex}}</button>
-<select (change)="genre($event)">
-    <option value="" selected>Selctionner un Genre</option>
-    <option *ngFor="let genre of filmsGenre">
-        {{genre}}
-    </option>
+    <select (change)="genre($event)">
+        <option value="" selected>Selectionner un Genre</option>
+        <option *ngFor="let genre of filmsGenre">
+            {{genre}}
+        </option>
+    </select>
+</div>
 
 
-</select>
-<div>
-    {{paginedFilms | json}}
+
+<div class="center-div"> <!-- *CARD -->
+    <div *ngIf="paginedFilms">
+      <ng-container *ngFor="let paginedFilm of paginedFilms">
+        <p-card class="card" header="{{ paginedFilm.Title }}" subheader="" [style]="{width: '360px'}" styleClass="p-card-shadow">
+            <ng-template pTemplate="header">
+                <img alt="Card" src="{{
+                    paginedFilm.Picture ? urlPicture + paginedFilm.Picture : pictureNotFound
+                }}">
+            </ng-template>
+            <p>{{ paginedFilm.ShortDescription }}</p>
+            
+            <ng-template pTemplate="footer">
+            <div class="textcenter-div">
+                <p-button label="More info"></p-button>
+                <iframe
+                width="330"
+                height="200"
+                [src]="embedTrailer(paginedFilm.Trailer) | urlProtet"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                ></iframe>
+            </div>
+            </ng-template>
+        </p-card>
+        </ng-container>
+    </div>
 </div>

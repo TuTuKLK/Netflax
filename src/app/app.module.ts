@@ -14,7 +14,11 @@ import { UrlProtetPipe } from './shared/url-protet.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {PaginatorModule} from 'primeng/paginator';
 import { ListeFilmsComponent } from './components/liste-films/liste-films.component';
-
+import {CardModule} from 'primeng/card';
+import {ButtonModule} from 'primeng/button';
+import { InfoComponent } from './components/info/info.component';
+import {MenubarModule} from 'primeng/menubar';
+import {MenuItem} from 'primeng/api';
 
 
 
@@ -30,7 +34,8 @@ import { ListeFilmsComponent } from './components/liste-films/liste-films.compon
     FilmsComponent,
     ActeursComponent,
     UrlProtetPipe,
-    ListeFilmsComponent
+    ListeFilmsComponent,
+    InfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,9 +43,12 @@ import { ListeFilmsComponent } from './components/liste-films/liste-films.compon
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    PaginatorModule
+    PaginatorModule,
+    CardModule,
+    ButtonModule,
+    MenubarModule,
+    // MenuItem
     
-
   ],
   providers: [],
   bootstrap: [AppComponent]
